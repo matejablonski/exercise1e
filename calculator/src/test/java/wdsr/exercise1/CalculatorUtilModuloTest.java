@@ -25,7 +25,8 @@ public class CalculatorUtilModuloTest {
 
   @Test
   public void test12moduloBy5() {
-    doReturn(2).when(calculator).modulo(12, 5);
+    // given
+    doReturn(2).when(calculator).modulo(anyInt(), anyInt());
 
     // when
     String result = calcUtil.getModuloText(12, 5);

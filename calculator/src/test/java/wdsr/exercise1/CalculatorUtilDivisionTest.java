@@ -25,6 +25,7 @@ public class CalculatorUtilDivisionTest {
 
   @Test
   public void test16dividedBy4() {
+    // given
     doReturn(4.0).when(calculator).divide(anyInt(), anyInt());
 
     // when
