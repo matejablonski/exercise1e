@@ -8,7 +8,9 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 
 import wdsr.exercise1.logic.Calculator;
@@ -22,6 +24,9 @@ public class CalculatorUtilModuloTest {
     calculator = Mockito.mock(Calculator.class);
     calcUtil = new CalculatorUtil(calculator);
   }
+
+  @Rule
+  public ExpectedException expectedException = ExpectedException.none();
 
   @Test
   public void test12moduloBy5() {
@@ -38,8 +43,10 @@ public class CalculatorUtilModuloTest {
   }
 
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test
   public void testModuloByZero() {
+    expectedException.expect(IllegalArgumentException.class);
+
     // given
     doThrow(new IllegalArgumentException()).when(calculator).modulo(anyInt(), eq(0));
 
